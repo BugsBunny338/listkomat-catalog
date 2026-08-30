@@ -1,8 +1,13 @@
 # listkomat-catalog
 
-Public ticket catalog for the **Lístkomat** iOS app. The app fetches `tickets.json`
-on launch (cached locally, with a bundled fallback when offline), so prices and SMS
-codes can be corrected here **without an App Store release**.
+Public ticket catalog for the **Lístkomat** apps
+([iOS](https://github.com/BugsBunny338/listkomat-ios),
+[Android](https://github.com/BugsBunny338/listkomat-android)). Each app fetches
+`tickets.json` on launch (cached locally, with a bundled fallback when offline), so
+prices and SMS codes can be corrected here **without a store release**.
+
+This file is now a **two-client contract** — both apps decode it, and older builds
+of either keep reading it forever.
 
 Verify every code/price against the operator's current ceník before editing.
 
