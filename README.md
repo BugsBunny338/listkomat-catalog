@@ -19,6 +19,22 @@ know); renaming or removing one breaks older builds in the wild. Bump `version` 
 every change: the app only adopts a fetched catalog whose `version` is `>=` the one
 it already has.
 
+## Durations
+
+`durationMinutes` is authoritative. The `duration` string ("70 min") is legacy —
+kept only for iOS builds shipped before 2.5; new clients must not display it.
+
+Both apps format durations from `durationMinutes` identically, or they disagree
+on screen:
+
+- Hours iff `minutes >= 120 && minutes % 60 == 0`, else minutes: 1440 → "24
+  hodin", 4320 → "72 hodin", but 60 → "60 minut" (operators sell sixty minutes,
+  not one hour).
+- Czech output is **accusative** — the phrase follows "Lístek na …", so it's
+  "na 1 hodinu", never "1 hodina". Generic duration formatters give nominative;
+  use plural resources instead (one/few/many/other: minutu/minuty/minuty/minut,
+  hodinu/hodiny/hodiny/hodin).
+
 ## Localization (`i18n`)
 
 Czech is the source language and lives in the plain fields (`name`, `note`). A city
